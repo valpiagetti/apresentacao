@@ -5,57 +5,149 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Validators } from "./factory/validator";
+export { Validators } from "./factory/validator";
 export namespace Components {
+    interface DateInput {
+        "validators": Validators;
+    }
     interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    }
+    interface MyForm {
+    }
+    interface NumberCard {
+    }
+    interface NumberCardOne {
+    }
+    interface NumberCardTwo {
+    }
+    interface StringInput {
+        "validators": Validators;
     }
 }
+export interface DateInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDateInputElement;
+}
+export interface StringInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLStringInputElement;
+}
 declare global {
+    interface HTMLDateInputElementEventMap {
+        "valueChanged": string;
+    }
+    interface HTMLDateInputElement extends Components.DateInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDateInputElementEventMap>(type: K, listener: (this: HTMLDateInputElement, ev: DateInputCustomEvent<HTMLDateInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDateInputElementEventMap>(type: K, listener: (this: HTMLDateInputElement, ev: DateInputCustomEvent<HTMLDateInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDateInputElement: {
+        prototype: HTMLDateInputElement;
+        new (): HTMLDateInputElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyFormElement extends Components.MyForm, HTMLStencilElement {
+    }
+    var HTMLMyFormElement: {
+        prototype: HTMLMyFormElement;
+        new (): HTMLMyFormElement;
+    };
+    interface HTMLNumberCardElement extends Components.NumberCard, HTMLStencilElement {
+    }
+    var HTMLNumberCardElement: {
+        prototype: HTMLNumberCardElement;
+        new (): HTMLNumberCardElement;
+    };
+    interface HTMLNumberCardOneElement extends Components.NumberCardOne, HTMLStencilElement {
+    }
+    var HTMLNumberCardOneElement: {
+        prototype: HTMLNumberCardOneElement;
+        new (): HTMLNumberCardOneElement;
+    };
+    interface HTMLNumberCardTwoElement extends Components.NumberCardTwo, HTMLStencilElement {
+    }
+    var HTMLNumberCardTwoElement: {
+        prototype: HTMLNumberCardTwoElement;
+        new (): HTMLNumberCardTwoElement;
+    };
+    interface HTMLStringInputElementEventMap {
+        "valueChanged": string;
+    }
+    interface HTMLStringInputElement extends Components.StringInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLStringInputElementEventMap>(type: K, listener: (this: HTMLStringInputElement, ev: StringInputCustomEvent<HTMLStringInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLStringInputElementEventMap>(type: K, listener: (this: HTMLStringInputElement, ev: StringInputCustomEvent<HTMLStringInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLStringInputElement: {
+        prototype: HTMLStringInputElement;
+        new (): HTMLStringInputElement;
+    };
     interface HTMLElementTagNameMap {
+        "date-input": HTMLDateInputElement;
         "my-component": HTMLMyComponentElement;
+        "my-form": HTMLMyFormElement;
+        "number-card": HTMLNumberCardElement;
+        "number-card-one": HTMLNumberCardOneElement;
+        "number-card-two": HTMLNumberCardTwoElement;
+        "string-input": HTMLStringInputElement;
     }
 }
 declare namespace LocalJSX {
+    interface DateInput {
+        "onValueChanged"?: (event: DateInputCustomEvent<string>) => void;
+        "validators"?: Validators;
+    }
     interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    }
+    interface MyForm {
+    }
+    interface NumberCard {
+    }
+    interface NumberCardOne {
+    }
+    interface NumberCardTwo {
+    }
+    interface StringInput {
+        "onValueChanged"?: (event: StringInputCustomEvent<string>) => void;
+        "validators"?: Validators;
     }
     interface IntrinsicElements {
+        "date-input": DateInput;
         "my-component": MyComponent;
+        "my-form": MyForm;
+        "number-card": NumberCard;
+        "number-card-one": NumberCardOne;
+        "number-card-two": NumberCardTwo;
+        "string-input": StringInput;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "date-input": LocalJSX.DateInput & JSXBase.HTMLAttributes<HTMLDateInputElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-form": LocalJSX.MyForm & JSXBase.HTMLAttributes<HTMLMyFormElement>;
+            "number-card": LocalJSX.NumberCard & JSXBase.HTMLAttributes<HTMLNumberCardElement>;
+            "number-card-one": LocalJSX.NumberCardOne & JSXBase.HTMLAttributes<HTMLNumberCardOneElement>;
+            "number-card-two": LocalJSX.NumberCardTwo & JSXBase.HTMLAttributes<HTMLNumberCardTwoElement>;
+            "string-input": LocalJSX.StringInput & JSXBase.HTMLAttributes<HTMLStringInputElement>;
         }
     }
 }
